@@ -31,6 +31,7 @@ test('App renders without error', () => {
   expect(component.length).toBe(1);
 });
 
+//this only test whether the getSecretWordMock is run
 describe('getSecretWord calls', () => {
   test('getSecretWord gets called on App mount', () => {
     setup();
@@ -38,11 +39,13 @@ describe('getSecretWord calls', () => {
     expect(mockGetSecretWord).toHaveBeenCalled();
   });
 
+  //the idea is we do not want to update the secret Word when App Component is re-rendered, it will be evil game
   test('secretWord does not update on App update', () => {
     const wrapper = setup();
     mockGetSecretWord.mockClear();
     //wrapper.update() doesn't trigger update
     //(issue forked from https://github.com/airbnb/enzyme/issues/2091)
+    //setProps similar to ComponentWillReceiveProps
     wrapper.setProps();
 
     expect(mockGetSecretWord).not.toHaveBeenCalled();
