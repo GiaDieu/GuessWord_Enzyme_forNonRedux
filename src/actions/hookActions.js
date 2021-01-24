@@ -5,4 +5,5 @@ export const getSecretWord = async (setSecretWord) => {
   setSecretWord(response.data);
 };
 
+//default export for mocking convenience
 export default { getSecretWord };
