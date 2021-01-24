@@ -5,11 +5,9 @@ describe('moxios test', () => {
   beforeEach(() => {
     moxios.install();
   });
-
   afterEach(() => {
     moxios.uninstall();
   });
-
   test('calls the getSecretWord callback on axios response', async () => {
     const secretWord = 'party';
     moxios.wait(() => {
